@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>IE-option显示隐藏</title>
+	<style>
+
+	</style>
+</head>
+<body>
+
+<div class="category_list">
+	<select class="select type" id="category_1">
+		<option value="1">注册体验</option>
+		<option value="2">社交传播</option>
+		<option value="3">调查采集</option>
+		<option value="4">办信用卡</option>
+		<option value="5">其他</option>
+	</select>
+	<select class="select type" id="category_2">
+		<option value="50" parent_id="1" >纯注册</option>
+		<option value="56" parent_id="2" >公众号</option>
+		<option value="60" parent_id="3" >问卷调查</option>
+		<option value="62" parent_id="4" >工商银行</option>
+		<option value="82" parent_id="5" >其他</option>
+		<option value="51" parent_id="1" >实名认证</option>
+		<option value="57" parent_id="2" >朋友圈</option>
+		<option value="61" parent_id="3" >数据采集</option>
+		<option value="63" parent_id="4" >建设银行</option>
+		<option value="52" parent_id="1" >绑定银行卡</option>
+		<option value="58" parent_id="2" >QQ群</option>
+		<option value="64" parent_id="4" >中国银行</option>
+		<option value="53" parent_id="1" >理财体验</option>
+		<option value="59" parent_id="2" >其他</option>
+		<option value="65" parent_id="4" >农业银行</option>
+		<option value="77" parent_id="4" >邮政储蓄</option>
+		<option value="54" parent_id="1" >借贷体验</option>
+		<option value="66" parent_id="4" >招商银行</option>
+		<option value="55" parent_id="1" >其他</option>
+		<option value="67" parent_id="4" >交通银行</option>
+		<option value="68" parent_id="4" >中信银行</option>
+		<option value="69" parent_id="4" >光大银行</option>
+		<option value="70" parent_id="4" >广发银行</option>
+		<option value="71" parent_id="4" >浦发银行</option>
+		<option value="72" parent_id="4" >兴业银行</option>
+		<option value="73" parent_id="4" >民生银行</option>
+		<option value="74" parent_id="4" >平安银行</option>
+		<option value="75" parent_id="4" >华夏银行</option>
+		<option value="76" parent_id="4" >花旗银行</option>
+		<option value="78" parent_id="4" >广州银行</option>
+		<option value="79" parent_id="4" >上海银行</option>
+		<option value="80" parent_id="4" >北京银行</option>
+		<option value="81" parent_id="4" >其他</option>
+	</select>
+</div>
+<script
+		src="http://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+		crossorigin="anonymous"></script>
+<script>
+
+	//一级分类
+	$("#category_1").change(function(){
+		var id = $(this).val();
+		console.log("id +" + id);
+
+		var ifIE = /msie ([\d.]+)/.test(window.navigator.userAgent.toLowerCase());
+		if(ifIE){
+			$("#category_2 option").not(".hide").wrap("<span style='display:none'></span>");
+			$("#category_2 option").addClass("hide");
+			$("#category_2 option[parent_id="+ id + "]").removeClass("hide");
+			var optionP = $("#category_2 option[parent_id="+ id + "]").parent("span");
+			optionP.each(function(){
+				$(this).children().clone().replaceAll($(this));
+			})
+		}else{
+			$("#category_2 option").hide();
+			$("#category_2 option[parent_id="+ id + "]").show();
+			$("#category_2 option[parent_id="+ id + "]").eq(0).prop('selected',true);
+		}
+	});
+	$("#category_1").change()
+</script>
+
+</body>
+</html>
