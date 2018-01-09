@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>流浪器定位</title>
+</head>
+<body>
+
+<script>
+    //本地无缓存城市信息，定位获取城市
+    function getLocationCity(cb){
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                    function (position) {
+                        var latitude = position.coords.latitude;
+                        var longitude = position.coords.longitude;
+                        var data = {
+                            latitude: latitude,
+                            longitude: longitude
+                        };
+                        alert(data);
+                    },
+                    function (error) {
+                        alert("浏览器定位失败");
+
+                        return;
+                    },
+                    {
+                        enableHighAccuracy: true,
+                        timeout: 3000,
+                        maximumAge: 1000
+                    });
+        }else{
+            alert("浏览器不支持定位");
+        }
+    }
+    getLocationCity()
+
+</script>
+
+
+</body>
+</html>
