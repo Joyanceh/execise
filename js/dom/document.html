@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap{width: 200px;height:200px;
+            background: yellow;text-align: center;}
+        .inner{width:50px;height:50px;margin:50px auto;padding:20px;border:3px solid red;
+            background: green;}
+        #list{width:400px;}
+        #list>li{height:40px;
+            background: #efefef;border-radius:4px;margin:8px 0;padding:0 12px;list-style: decimal;}
+
+    </style>
+</head>
+<body>
+    <div id="div1" class="wrap">外面
+        <div id="div2" class="inner class1 class2 class3">
+            里面
+        </div>
+    </div>
+    <div>
+
+        <ul id="list">
+            <li>呵呵哈哈哈</li>
+            <li>呵呵哈哈哈</li>
+            <li>呵呵哈哈哈</li>
+            <li>呵呵哈哈哈</li>
+            <li>呵呵哈哈哈</li>
+            <li>呵呵哈哈哈</li>
+        </ul>
+        <button class="" onclick="addLi()">添加</button>
+        <div id="b" href="http://www.baidu.com">bottom</div>
+    </div>
+<script>
+    var div1 = document.getElementById('div1');
+
+    document.getElementById('b').accessKey='b';
+    //addEventListener IE 9+ 才支持
+    document.getElementById("b").addEventListener("click", function(){
+        alert("aasfsadfsfsd")
+    });
+
+    function addLi() {
+
+        var node1 = document.createElement('LI');
+        node1.appendChild(document.createTextNode('添加的节点'));
+        document.getElementById('list').appendChild(node1);
+    }
+
+
+</script>
+</body>
+</html>

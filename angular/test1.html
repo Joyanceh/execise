@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body>
+
+<div ng-app="myApp">
+    <div  ng-controller = "myCtrl">
+        <p>名字 : <input type="text" ng-model="name"></p>
+        <p>转大写 {{name | uppercase}}</p>
+
+    </div>
+    <div  ng-controller = "myCtrl2">
+        <p>名字 : <input type="text" ng-model="name"></p>
+        <p>转小写 {{name | lowercase }}</p>
+    </div>
+    <div  ng-controller = "myCtrl3">
+        <p>输入过滤:</p>
+        <p><input type="text" ng-model="test"></p>
+        <ul>
+            <li ng-repeat="x in names | filter:test | orderBy:'country'">
+                {{ (x.name | uppercase) + ', ' + x.country }}
+            </li>
+        </ul>
+
+    </div>
+  <div  ng-controller = "myCtrlService">
+        <h2>自定义service:</h2>
+        <ul>
+            <li ng-repeat="x in names | filter:test | orderBy:'country'">
+                {{ (x.name | uppercase) + ', ' + x.country }}
+            </li>
+        </ul>
+
+    </div>
+
+
+
+</div>
+<script>
+var app = angular.module('myApp', []);
+    app.controller('myCtrl', function ($scope) {
+        $scope.name = "哇哈哈sEVfs"
+    }).service('hexafy', function() {
+        this.myFunc = function (x) {
+            return x.toString(16);
+        }
+    });
+
+    app.controller('myCtrl2', function ($scope) {
+        $scope.name = "三生三世sCDFsh"
+    })
+    app.controller('myCtrl3', function ($scope) {
+        $scope.names = [
+            {name:'Jani',country:'Norway'},
+            {name:'Hege',country:'Sweden'},
+            {name:'Kai',country:'Denmark'}
+        ];
+    })
+
+
+</script>
+</body>
+</html>
